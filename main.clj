@@ -12,3 +12,7 @@
 (println "-------------")
 
 (calculate-discount 400)
+
+(println "-------------")
+
+(calculate-discount 50)
