@@ -1,20 +1,30 @@
 (ns stock.calculate)
 
-(defn calculate-discount
-  "Return the value with 10% of discount if value is bigger than 100"
+(defn should-apply-discount?
   [value]
-  (if (> value 100)
+  (> value 100))
+
+(defn calculate-discount
+  "Return the value with 20% of discount if value can be applied"
+  [apply? value]
+  (if (apply? value)
     (let [discount-tax (/ 20 100) discount-value (* value discount-tax)]
       (println "Discount value is" discount-value)
       (println "The new value is" (- value discount-value)))
     (println "This value doens't have discount")))
 
-(calculate-discount 100)
+(calculate-discount should-apply-discount? 100)
 
 (println "-------------")
 
-(calculate-discount 400)
+(calculate-discount should-apply-discount? 400)
 
-; (println "-------------")
+(println "-------------")
 
-; (calculate-discount 50)
+(calculate-discount (fn [value] (> value 20)) 50)
+
+(println "-------------")
+
+(calculate-discount #(> %1 20) 200)
+
+; (println (should-apply-discount? 200))
