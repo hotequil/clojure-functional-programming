@@ -44,3 +44,14 @@
 (println "Using filter ->" (filter is-bigger-than-fifty? prices))
 
 (println "Using map after filter ->" (map multiply-by-two (filter is-bigger-than-fifty? prices)))
+
+(println "Using reduce ->" (reduce + prices))
+
+(defn sum-values
+  "Sum values"
+  [first-value, second-value]
+  (println "Sum ->" first-value "+" second-value)
+  (+ first-value second-value))
+
+(println "Using personalized function with reduce ->" (reduce sum-values prices))
+(println "Using small array with reduce ->" (reduce sum-values 0 [20]))
