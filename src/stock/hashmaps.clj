@@ -1,0 +1,15 @@
+(ns stock.hashmaps)
+
+(def products { :pencil 4 :rubber 2 })
+
+(println "Products ->" products)
+(println "Products size ->" (count products))
+(println "Products keys ->" (keys products))
+(println "Products vals ->" (vals products))
+(println "Products with assoc ->" (assoc products :notebook 20))
+(println "Products ->" products)
+(println "Products with assoc ->" (assoc products :pencil 6))
+(println "Products with update ->" (update products :pencil inc))
+(println "Products with update ->" (update products :pencil (fn [value] (* value 5))))
+(println "Products with update ->" (update products :pencil #(* % 10)))
+(println "Products with dissoc ->" (dissoc products :pencil))
